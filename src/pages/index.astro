@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 3);
+
+const expertise = [
+  { area: 'Backend Systems', detail: 'Distributed systems, APIs, event-driven architecture' },
+  { area: 'Cloud & Infrastructure', detail: 'Cloudflare, AWS, containerization, CI/CD' },
+  { area: 'Frontend', detail: 'React, TypeScript, component design, performance' },
+  { area: 'Engineering Leadership', detail: 'Technical strategy, code review, mentorship' },
+];
+---
+
+<BaseLayout title="Rafael Aguirre" description="Software engineer, architect, and technical writer.">
+  <!-- Hero -->
+  <section class="pb-16 pt-20">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
+      Rafael Aguirre
+    </h1>
+    <p class="mt-4 text-xl leading-relaxed text-slate-600 dark:text-slate-400">
+      Software engineer &amp; architect. I build reliable systems and write about what I learn along the way.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href="/projects"
+        class="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300 transition-colors"
+      >
+        View projects
+      </a>
+      <a
+        href="/about"
+        class="inline-flex items-center rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:text-slate-300 dark:hover:border-slate-500 transition-colors"
+      >
+        About me
+      </a>
+    </div>
+  </section>
+
+  <!-- Expertise -->
+  <section class="border-t border-slate-100 py-16 dark:border-slate-800">
+    <h2 class="mb-8 text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+      Expertise
+    </h2>
+    <dl class="grid gap-6 sm:grid-cols-2">
+      {expertise.map(({ area, detail }) => (
+        <div>
+          <dt class="font-semibold text-slate-900 dark:text-slate-100">{area}</dt>
+          <dd class="mt-1 text-sm text-slate-600 dark:text-slate-400">{detail}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- Featured Projects -->
+  {projects.length > 0 && (
+    <section class="border-t border-slate-100 py-16 dark:border-slate-800">
+      <div class="mb-8 flex items-center justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+          Featured Projects
+        </h2>
+        <a href="/projects" class="text-sm text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+          All projects →
+        </a>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <ProjectCard
+            id={project.id}
+            title={project.data.title}
+            summary={project.data.summary}
+            stack={project.data.stack}
+            year={project.data.year}
+            repoUrl={project.data.repoUrl}
+            liveUrl={project.data.liveUrl}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Latest Articles -->
+  {articles.length > 0 && (
+    <section class="border-t border-slate-100 py-16 dark:border-slate-800">
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+          Latest Articles
+        </h2>
+        <a href="/articles" class="text-sm text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+          All articles →
+        </a>
+      </div>
+      <div>
+        {articles.map((article) => (
+          <ArticleCard
+            id={article.id}
+            title={article.data.title}
+            description={article.data.description}
+            publishedAt={article.data.publishedAt}
+            tags={article.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

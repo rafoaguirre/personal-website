@@ -1,0 +1,63 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  summary: string;
+  stack?: string[];
+  year: number;
+  repoUrl?: string;
+  liveUrl?: string;
+}
+
+const { id, title, summary, stack = [], year, repoUrl, liveUrl } = Astro.props;
+const slug = id.replace(/\.(md|mdx)$/, '');
+---
+
+<article class="group rounded-xl border border-slate-200 p-6 transition-all hover:border-slate-400 dark:border-slate-800 dark:hover:border-slate-600">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1 min-w-0">
+      <a href={`/projects/${slug}`} class="block">
+        <h2 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          {title}
+        </h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+          {summary}
+        </p>
+      </a>
+      {stack.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-1.5">
+          {stack.map((tech) => (
+            <span class="inline-block rounded-md bg-slate-100 px-2 py-0.5 text-xs font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+    <span class="shrink-0 text-sm text-slate-400 dark:text-slate-500">{year}</span>
+  </div>
+  {(repoUrl || liveUrl) && (
+    <div class="mt-4 flex gap-4 border-t border-slate-100 pt-4 dark:border-slate-800">
+      {liveUrl && (
+        <a
+          href={liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs font-medium text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+        >
+          Live site →
+        </a>
+      )}
+      {repoUrl && (
+        <a
+          href={repoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs font-medium text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+        >
+          GitHub →
+        </a>
+      )}
+    </div>
+  )}
+</article>

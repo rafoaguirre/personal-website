@@ -1,0 +1,16 @@
+{
+  "name": "Rafael Aguirre",
+  "short_name": "rafaeloaguirre",
+  "description": "Software engineer, architect, and technical writer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'SQL'] },
+  { category: 'Backend', items: ['Node.js', 'REST APIs', 'GraphQL', 'PostgreSQL', 'Redis'] },
+  { category: 'Frontend', items: ['React', 'Astro', 'Tailwind CSS', 'Vite'] },
+  { category: 'Infrastructure', items: ['Cloudflare', 'AWS', 'Docker', 'CI/CD', 'GitHub Actions'] },
+];
+---
+
+<BaseLayout title="About" description="Background, skills, and experience of Rafael Aguirre.">
+  <section class="py-16">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+      About
+    </h1>
+
+    <div class="mt-8 space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+      <p>
+        I'm Rafael Aguirre, a software engineer with a focus on building reliable, well-architected systems.
+        I care deeply about clean code, good abstractions, and systems that are easy to reason about and maintain.
+      </p>
+      <p>
+        I've worked across the full stack — from designing distributed backend services to building
+        polished frontend interfaces. Outside of day-to-day engineering, I'm interested in technical
+        writing as a way to solidify and share what I learn.
+      </p>
+      <p>
+        This site is where I document my projects and publish articles on topics I care about:
+        software architecture, engineering trade-offs, tooling, and the craft of writing good software.
+      </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="mt-16 border-t border-slate-100 pt-12 dark:border-slate-800">
+      <h2 class="mb-8 text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        Skills &amp; Tools
+      </h2>
+      <dl class="grid gap-6 sm:grid-cols-2">
+        {skills.map(({ category, items }) => (
+          <div>
+            <dt class="font-semibold text-slate-900 dark:text-slate-100">{category}</dt>
+            <dd class="mt-2 flex flex-wrap gap-1.5">
+              {items.map((item) => (
+                <span class="inline-block rounded-md bg-slate-100 px-2.5 py-1 text-xs font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                  {item}
+                </span>
+              ))}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <!-- Links -->
+    <div class="mt-16 border-t border-slate-100 pt-12 dark:border-slate-800">
+      <h2 class="mb-6 text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        Find me
+      </h2>
+      <ul class="flex flex-wrap gap-4">
+        {[
+          { label: 'GitHub', href: 'https://github.com/rafoaguirre' },
+          { label: 'LinkedIn', href: 'https://linkedin.com/in/rafaeloaguirre' },
+          { label: 'Email', href: 'mailto:hey@rafaeloaguirre.com' },
+        ].map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
+            >
+              {label} →
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
