@@ -1,0 +1,70 @@
+<script>
+  const renderMermaid = async () => {
+    const codeBlocks = document.querySelectorAll('pre[data-language="mermaid"] code');
+
+    if (codeBlocks.length === 0) {
+      return;
+    }
+
+    const { default: mermaid } = await import('mermaid');
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'loose',
+      theme: 'neutral',
+    });
+
+    for (const codeBlock of codeBlocks) {
+      const pre = codeBlock.parentElement;
+      const source = codeBlock.textContent?.trim();
+
+      if (!pre || !source || pre.dataset.mermaidProcessed === 'true') {
+        continue;
+      }
+
+      try {
+        const id = `mermaid-${crypto.randomUUID()}`;
+        const { svg } = await mermaid.render(id, source);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mermaid-diagram not-prose';
+        wrapper.innerHTML = svg;
+        pre.dataset.mermaidProcessed = 'true';
+        pre.replaceWith(wrapper);
+      } catch (error) {
+        console.error('Failed to render Mermaid diagram.', error);
+      }
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        void renderMermaid();
+      },
+      { once: true },
+    );
+  } else {
+    void renderMermaid();
+  }
+</script>
+
+<style>
+  :global(.mermaid-diagram) {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    border: 1px solid rgba(24, 24, 27, 0.1);
+    border-radius: 1.5rem;
+    background: rgba(250, 250, 249, 0.9);
+    padding: 1rem;
+  }
+
+  :global(.mermaid-diagram svg) {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+</style>

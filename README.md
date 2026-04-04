@@ -55,6 +55,32 @@ pnpm build
 pnpm exec wrangler deploy
 ```
 
+### Staging deploy (subdomain)
+
+This repo is configured with a `staging` Wrangler environment targeting:
+
+- `staging.rafaeloaguirre.com`
+
+First-time setup:
+
+```sh
+pnpm exec wrangler login
+pnpm exec wrangler whoami
+```
+
+Deploy to staging:
+
+```sh
+pnpm build
+pnpm exec wrangler deploy --env staging
+```
+
+Important:
+
+- `rafaeloaguirre.com` must be in the same Cloudflare account you deploy from.
+- DNS for `staging` should be managed by Cloudflare (proxied). If a conflicting DNS record already exists, remove it before deploy.
+- SSL provisioning on first custom-domain attach can take a few minutes.
+
 ## Commit conventions
 
 Uses [Conventional Commits](https://www.conventionalcommits.org/) with an added `content` type:

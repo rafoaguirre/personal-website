@@ -13,15 +13,18 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft)).so
   description="Technical writing by Rafael Aguirre on software engineering, architecture, and craft."
 >
   <section class="py-16">
-    <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Articles</h1>
-    <p class="mt-3 text-slate-600 dark:text-slate-400">
+    <p class="section-kicker">articles</p>
+    <h1 class="mt-5 text-4xl font-semibold text-[var(--site-ink)]">Articles</h1>
+    <p class="mt-4 text-base leading-8 text-[var(--site-muted)]">
       Writing on software engineering, architecture, and the craft of building good systems.
     </p>
 
-    <div class="mt-10">
+    <div class="mt-10 grid gap-5">
       {
         articles.length === 0 ? (
-          <p class="text-slate-500 dark:text-slate-500">No articles yet. Check back soon.</p>
+          <p class="panel-card rounded-[1.4rem] p-6 text-[var(--site-muted)]">
+            No articles yet. Check back soon.
+          </p>
         ) : (
           articles.map((article) => (
             <ArticleCard

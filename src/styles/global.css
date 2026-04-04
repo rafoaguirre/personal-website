@@ -167,3 +167,35 @@
 .portrait-float {
   animation: floaty 6s ease-in-out infinite;
 }
+
+.site-prose {
+  color: var(--site-muted);
+}
+
+.site-prose :where(h1, h2, h3, h4, strong, th) {
+  color: var(--site-ink);
+}
+
+.site-prose :where(a) {
+  color: var(--site-cyan);
+  text-decoration: none;
+}
+
+.site-prose :where(a:hover) {
+  color: var(--site-accent);
+  text-decoration: underline;
+}
+
+.site-prose :where(code):not(:where(pre code)) {
+  border: 1px solid var(--site-line);
+  border-radius: 0.45rem;
+  background: var(--site-panel-strong);
+  padding: 0.1rem 0.4rem;
+  color: var(--site-ink);
+}
+
+.site-prose :where(pre) {
+  border: 1px solid var(--site-line);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--site-bg-soft) 84%, black 16%);
+}

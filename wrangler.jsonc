@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "rafaeloaguirre",
   "compatibility_date": "2026-04-03",
   "compatibility_flags": ["global_fetch_strictly_public"],
@@ -8,5 +9,15 @@
   },
   "observability": {
     "enabled": true,
+  },
+  "env": {
+    "staging": {
+      "routes": [
+        {
+          "pattern": "staging.rafaeloaguirre.com",
+          "custom_domain": true,
+        },
+      ],
+    },
   },
 }
