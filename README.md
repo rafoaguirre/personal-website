@@ -26,10 +26,10 @@ Articles live in `src/content/articles/` as `.mdx` files. Projects live in `src/
 
 ```mdx
 ---
-title: "Your title"
-description: "One-sentence summary."
+title: 'Your title'
+description: 'One-sentence summary.'
 publishedAt: 2026-04-03
-tags: ["tag-one", "tag-two"]
+tags: ['tag-one', 'tag-two']
 draft: false
 ---
 
@@ -59,11 +59,11 @@ pnpm exec wrangler deploy
 
 Uses [Conventional Commits](https://www.conventionalcommits.org/) with an added `content` type:
 
-| Type | When to use |
-|---|---|
+| Type      | When to use                                 |
+| --------- | ------------------------------------------- |
 | `content` | New article, project entry, or site content |
-| `feat` | New page, feature, or component |
-| `fix` | Bug fix |
-| `style` | Visual / CSS-only changes |
-| `chore` | Dependencies, tooling, config |
-| `ci` | Cloudflare / GitHub Actions config |
+| `feat`    | New page, feature, or component             |
+| `fix`     | Bug fix                                     |
+| `style`   | Visual / CSS-only changes                   |
+| `chore`   | Dependencies, tooling, config               |
+| `ci`      | Cloudflare / GitHub Actions config          |

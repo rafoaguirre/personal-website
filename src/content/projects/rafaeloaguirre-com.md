@@ -1,10 +1,10 @@
 ---
-title: "rafaeloaguirre.com"
-summary: "Personal website and technical blog built with Astro 6, MDX, Tailwind 4, and deployed to Cloudflare Workers."
-stack: ["Astro", "TypeScript", "Tailwind CSS", "MDX", "Cloudflare Workers"]
+title: 'rafaeloaguirre.com'
+summary: 'Personal website and technical blog built with Astro 6, MDX, Tailwind 4, and deployed to Cloudflare Workers.'
+stack: ['Astro', 'TypeScript', 'Tailwind CSS', 'MDX', 'Cloudflare Workers']
 year: 2026
-repoUrl: "https://github.com/rafoaguirre/website"
-liveUrl: "https://rafaeloaguirre.com"
+repoUrl: 'https://github.com/rafoaguirre/website'
+liveUrl: 'https://rafaeloaguirre.com'
 featured: true
 ---
 

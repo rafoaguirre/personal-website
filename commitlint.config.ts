@@ -9,14 +9,14 @@ const config: UserConfig = {
       'always',
       [
         'content', // new article, project entry, or other site content
-        'feat',    // new page, feature, or component
-        'fix',     // bug fix
-        'style',   // visual / CSS-only changes
+        'feat', // new page, feature, or component
+        'fix', // bug fix
+        'style', // visual / CSS-only changes
         'refactor',
         'perf',
         'test',
-        'chore',   // deps, tooling, config
-        'ci',      // Cloudflare / GitHub Actions config
+        'chore', // deps, tooling, config
+        'ci', // Cloudflare / GitHub Actions config
         'revert',
       ],
     ],

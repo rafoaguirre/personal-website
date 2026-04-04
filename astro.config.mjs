@@ -12,6 +12,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   adapter: cloudflare(),
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
 });

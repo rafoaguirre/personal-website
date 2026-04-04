@@ -11,6 +11,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "generate-types": "wrangler types",
     "prepare": "husky"
   },
@@ -22,6 +24,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.3",
+    "simple-icons": "^16.14.0",
     "tailwindcss": "^4.2.2",
     "wrangler": "^4.80.0"
   },
@@ -35,12 +38,18 @@
       "workerd"
     ]
   },
+  "lint-staged": {
+    "*.{astro,ts,js,mjs,css,md,mdx,json}": "prettier --write"
+  },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@commitlint/types": "^20.5.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.3"
   }
 }

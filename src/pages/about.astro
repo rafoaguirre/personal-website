@@ -2,78 +2,92 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const skills = [
-  { category: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'SQL'] },
-  { category: 'Backend', items: ['Node.js', 'REST APIs', 'GraphQL', 'PostgreSQL', 'Redis'] },
-  { category: 'Frontend', items: ['React', 'Astro', 'Tailwind CSS', 'Vite'] },
-  { category: 'Infrastructure', items: ['Cloudflare', 'AWS', 'Docker', 'CI/CD', 'GitHub Actions'] },
+  {
+    category: 'Blockchain',
+    items: ['Solidity', 'Hardhat', 'ethers.js', 'Solana', 'Anchor', 'DApps', 'Wallets'],
+  },
+  { category: 'Languages', items: ['Rust', 'Golang', 'TypeScript', 'JavaScript', 'Dart'] },
+  { category: 'Frontend / Mobile', items: ['React', 'Next.js', 'React Native', 'Flutter'] },
+  { category: 'Cloud / DevOps', items: ['AWS', 'GCP', 'Terraform', 'CI/CD', 'SRE'] },
+  { category: 'Data', items: ['PostgreSQL', 'MongoDB'] },
+  { category: 'Tooling', items: ['GitHub Copilot', 'Codex', 'MCP servers', 'VS Code'] },
 ];
 ---
 
-<BaseLayout title="About" description="Background, skills, and experience of Rafael Aguirre.">
+<BaseLayout
+  title="About"
+  description="Background, experience, and technical focus of Rafael Aguirre."
+>
   <section class="py-16">
-    <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-      About
-    </h1>
+    <p class="section-kicker">about</p>
+    <h1 class="mt-5 text-4xl font-semibold text-[var(--site-ink)]">About</h1>
 
-    <div class="mt-8 space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+    <div
+      class="panel-card mt-8 rounded-[1.8rem] p-7 space-y-6 text-base leading-8 text-[var(--site-muted)]"
+    >
       <p>
-        I'm Rafael Aguirre, a software engineer with a focus on building reliable, well-architected systems.
-        I care deeply about clean code, good abstractions, and systems that are easy to reason about and maintain.
+        I am a blockchain-focused software engineer with more than eight years of experience
+        designing, building, deploying, and maintaining systems across Web3, backend, mobile, and
+        cloud. My work usually sits at the intersection of architecture and delivery: turning
+        complex technical requirements into software that can survive real usage.
       </p>
       <p>
-        I've worked across the full stack — from designing distributed backend services to building
-        polished frontend interfaces. Outside of day-to-day engineering, I'm interested in technical
-        writing as a way to solidify and share what I learn.
+        The strongest thread through my experience is blockchain architecture across EVM and Solana
+        ecosystems, including smart contracts, DApps, wallet products, NFT systems, decentralized
+        exchange interfaces, and event-driven trading workflows. Around that, I stay close to the
+        infrastructure: CI/CD, SRE practices, cloud environments, automation, and reliability.
       </p>
       <p>
-        This site is where I document my projects and publish articles on topics I care about:
-        software architecture, engineering trade-offs, tooling, and the craft of writing good software.
+        I also care about technical writing as a way to sharpen judgment and make the reasoning
+        behind engineering decisions more explicit. This site is where I document projects, share
+        what I am learning, and show the kinds of systems work I enjoy doing most.
       </p>
     </div>
 
-    <!-- Skills -->
-    <div class="mt-16 border-t border-slate-100 pt-12 dark:border-slate-800">
-      <h2 class="mb-8 text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div class="mt-16 border-t border-[var(--site-line)] pt-12">
+      <h2 class="mb-8 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--site-muted)]">
         Skills &amp; Tools
       </h2>
-      <dl class="grid gap-6 sm:grid-cols-2">
-        {skills.map(({ category, items }) => (
-          <div>
-            <dt class="font-semibold text-slate-900 dark:text-slate-100">{category}</dt>
-            <dd class="mt-2 flex flex-wrap gap-1.5">
-              {items.map((item) => (
-                <span class="inline-block rounded-md bg-slate-100 px-2.5 py-1 text-xs font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-                  {item}
-                </span>
-              ))}
-            </dd>
-          </div>
-        ))}
+      <dl class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {
+          skills.map(({ category, items }) => (
+            <div class="panel-card rounded-[1.5rem] p-5">
+              <dt class="text-lg font-semibold text-[var(--site-ink)]">{category}</dt>
+              <dd class="mt-3 flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <span class="inline-block rounded-full border border-[var(--site-line)] bg-[var(--site-panel-strong)] px-3 py-1 text-xs font-mono text-[var(--site-muted)]">
+                    {item}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
       </dl>
     </div>
 
-    <!-- Links -->
-    <div class="mt-16 border-t border-slate-100 pt-12 dark:border-slate-800">
-      <h2 class="mb-6 text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div class="mt-16 border-t border-[var(--site-line)] pt-12">
+      <h2 class="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--site-muted)]">
         Find me
       </h2>
       <ul class="flex flex-wrap gap-4">
-        {[
-          { label: 'GitHub', href: 'https://github.com/rafoaguirre' },
-          { label: 'LinkedIn', href: 'https://linkedin.com/in/rafaeloaguirre' },
-          { label: 'Email', href: 'mailto:hey@rafaeloaguirre.com' },
-        ].map(({ label, href }) => (
-          <li>
-            <a
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              class="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
-            >
-              {label} →
-            </a>
-          </li>
-        ))}
+        {
+          [
+            { label: 'GitHub', href: 'https://github.com/rafoaguirre' },
+            { label: 'LinkedIn', href: 'https://linkedin.com/in/rafaeloaguirre' },
+          ].map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                class="rounded-full border border-[var(--site-line)] bg-[var(--site-panel)] px-4 py-2 text-sm font-medium text-[var(--site-ink)] hover:border-[var(--site-accent)] hover:text-[var(--site-accent)]"
+              >
+                {label} →
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>

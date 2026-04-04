@@ -1,0 +1,90 @@
+---
+import type { SimpleIcon } from 'simple-icons';
+import {
+  siEthereum,
+  siEthers,
+  siFlutter,
+  siGo,
+  siGooglecloud,
+  siMongodb,
+  siNextdotjs,
+  siNodedotjs,
+  siPostgresql,
+  siReact,
+  siRust,
+  siSolana,
+  siSolidity,
+  siTerraform,
+  siTypescript,
+} from 'simple-icons';
+
+type TechItem = {
+  label: string;
+  icon?: SimpleIcon;
+};
+
+const technologies: TechItem[] = [
+  { label: 'Solana', icon: siSolana },
+  { label: 'Solidity', icon: siSolidity },
+  { label: 'Ethereum', icon: siEthereum },
+  { label: 'Anchor' },
+  { label: 'Hardhat' },
+  { label: 'ethers.js', icon: siEthers },
+  { label: 'Rust', icon: siRust },
+  { label: 'Go', icon: siGo },
+  { label: 'Node.js', icon: siNodedotjs },
+  { label: 'TypeScript', icon: siTypescript },
+  { label: 'React', icon: siReact },
+  { label: 'Next.js', icon: siNextdotjs },
+  { label: 'Flutter', icon: siFlutter },
+  { label: 'PostgreSQL', icon: siPostgresql },
+  { label: 'MongoDB', icon: siMongodb },
+  { label: 'AWS' },
+  { label: 'Terraform', icon: siTerraform },
+  { label: 'Google Cloud', icon: siGooglecloud },
+];
+
+const trackItems = [...technologies, ...technologies];
+---
+
+<div class="panel-card overflow-hidden rounded-[1.8rem] px-4 py-4 sm:px-6">
+  <div class="mb-4 flex items-center justify-between gap-4">
+    <div>
+      <p class="section-kicker">stack at a glance</p>
+    </div>
+    <p class="hidden text-sm text-[var(--site-muted)] sm:block">web3, backend, mobile, infra</p>
+  </div>
+
+  <div class="marquee-mask">
+    <div class="marquee-track gap-3">
+      {
+        trackItems.map(({ label, icon }, index) => (
+          <div
+            class="flex min-w-fit items-center gap-3 rounded-full border border-[var(--site-line)] bg-[var(--site-panel-strong)] px-4 py-3 shadow-[0_10px_25px_rgba(34,24,12,0.06)]"
+            aria-hidden={index >= technologies.length ? 'true' : undefined}
+          >
+            {icon ? (
+              <span
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--site-line)] bg-white/80"
+                style={`color:#${icon.hex};`}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-[1.125rem] w-[1.125rem] fill-current"
+                  aria-hidden="true"
+                >
+                  <path d={icon.path} />
+                </svg>
+              </span>
+            ) : (
+              <span class="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--site-line)] bg-white/80 text-[0.65rem] font-bold text-[var(--site-muted)]">
+                {label.slice(0, 2).toUpperCase()}
+              </span>
+            )}
+            <span class="text-sm font-medium text-[var(--site-ink)]">{label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

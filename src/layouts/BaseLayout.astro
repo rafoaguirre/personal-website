@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'Software engineer, architect, and technical writer.',
+  description = 'Blockchain architect and senior full-stack engineer building production systems across web3, backend, and cloud.',
   image,
 } = Astro.props;
 
@@ -43,15 +43,19 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
     {ogImage && <meta property="og:image" content={ogImage} />}
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
   </head>
-  <body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors">
-    <div class="mx-auto max-w-3xl px-6">
+  <body>
+    <div
+      class="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top_left,rgba(240,93,56,0.16),transparent_38%),radial-gradient(circle_at_top_right,rgba(10,124,134,0.12),transparent_34%)]"
+    >
+    </div>
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
       <Header />
-      <main>
+      <main class="pb-20">
         <slot />
       </main>
       <Footer />

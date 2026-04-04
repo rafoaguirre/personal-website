@@ -8,27 +8,62 @@ const navLinks = [
 const pathname = Astro.url.pathname;
 ---
 
-<header class="flex items-center justify-between py-8">
-  <a href="/" class="text-sm font-semibold text-slate-900 hover:text-slate-600 dark:text-slate-100 dark:hover:text-slate-400 transition-colors">
-    Rafael Aguirre
-  </a>
-  <nav>
-    <ul class="flex items-center gap-6">
-      {navLinks.map(({ href, label }) => (
-        <li>
-          <a
-            href={href}
-            class:list={[
-              'text-sm transition-colors',
-              pathname.startsWith(href)
-                ? 'text-slate-900 font-medium dark:text-slate-100'
-                : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100',
-            ]}
-          >
-            {label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+<header class="sticky top-0 z-20 py-5">
+  <div
+    class="panel-card flex flex-col gap-4 rounded-[2rem] px-5 py-5 lg:flex-row lg:items-center lg:justify-between"
+  >
+    <a href="/" class="min-w-0">
+      <span
+        class="block truncate text-2xl py-3 font-semibold leading-none text-[var(--site-ink)] hover:text-[var(--site-accent)] sm:text-3xl"
+      >
+        Rafael Aguirre
+      </span>
+      <span
+        class="block text-[0.82rem] font-medium lowercase tracking-[0.04em] text-[var(--site-muted)]"
+      >
+        Available for remote collaboration
+      </span>
+    </a>
+    <div class="flex flex-col gap-3 lg:items-end">
+      <nav>
+        <ul class="flex items-center gap-2 sm:gap-3">
+          {
+            navLinks.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  class:list={[
+                    'rounded-full px-3 py-2 text-sm font-medium',
+                    pathname.startsWith(href)
+                      ? 'bg-[var(--site-ink)] text-[var(--site-bg-soft)]'
+                      : 'text-[var(--site-muted)] hover:bg-[var(--site-panel-strong)] hover:text-[var(--site-ink)]',
+                  ]}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="flex flex-wrap gap-2">
+        <a
+          href="https://github.com/rafoaguirre"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-[var(--site-line)] bg-[var(--site-panel-strong)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--site-muted)] hover:border-[var(--site-accent)] hover:text-[var(--site-accent)]"
+        >
+          github
+        </a>
+        <a
+          href="https://linkedin.com/in/rafaeloaguirre"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full border border-[var(--site-line)] bg-[var(--site-panel-strong)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--site-muted)] hover:border-[var(--site-accent)] hover:text-[var(--site-accent)]"
+        >
+          linkedin
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
