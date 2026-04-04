@@ -71,8 +71,7 @@ pnpm exec wrangler whoami
 Deploy to staging:
 
 ```sh
-pnpm build
-pnpm exec wrangler deploy --env staging
+pnpm exec wrangler deploy --config wrangler.jsonc --env staging
 ```
 
 Important:
@@ -80,6 +79,14 @@ Important:
 - `rafaeloaguirre.com` must be in the same Cloudflare account you deploy from.
 - DNS for `staging` should be managed by Cloudflare (proxied). If a conflicting DNS record already exists, remove it before deploy.
 - SSL provisioning on first custom-domain attach can take a few minutes.
+- If Wrangler says it is using redirected config from `dist/server/wrangler.json`, force root config with `--config wrangler.jsonc`.
+
+Useful scripts:
+
+```sh
+pnpm run deploy:staging
+pnpm run deploy:prod
+```
 
 ## Commit conventions
 

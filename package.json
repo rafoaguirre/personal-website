@@ -11,6 +11,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
+    "deploy:prod": "pnpm build && wrangler deploy --config wrangler.jsonc",
+    "deploy:staging": "pnpm build && wrangler deploy --config wrangler.jsonc --env staging",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "generate-types": "wrangler types",

@@ -1,23 +1,27 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "rafaeloaguirre",
-  "compatibility_date": "2026-04-03",
-  "compatibility_flags": ["global_fetch_strictly_public"],
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS",
-  },
-  "observability": {
-    "enabled": true,
-  },
-  "env": {
-    "staging": {
-      "routes": [
-        {
-          "pattern": "staging.rafaeloaguirre.com",
-          "custom_domain": true,
-        },
-      ],
-    },
-  },
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "rafaeloaguirre",
+	"compatibility_date": "2026-04-03",
+	"workers_dev": false,
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": "./dist/client",
+	},
+	"observability": {
+		"enabled": true,
+	},
+	"env": {
+		"staging": {
+			"name": "rafaeloaguirre-staging",
+			"workers_dev": true,
+			"routes": [
+				{
+					"pattern": "staging.rafaeloaguirre.com",
+					"custom_domain": true,
+				},
+			],
+		},
+	},
 }
