@@ -1,0 +1,66 @@
+name: Deploy Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to deploy (main or semver tag like v1.2.3)
+        required: false
+        default: main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - name: Validate deploy ref
+        id: validate_ref
+        run: |
+          ref_input="${{ inputs.ref }}"
+          if [ -z "$ref_input" ]; then
+            ref_input="main"
+          fi
+
+          if [[ "$ref_input" == "main" || "$ref_input" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "ref=$ref_input" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "::error::Invalid ref '$ref_input'. Allowed refs: main or semver tag vX.Y.Z."
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.validate_ref.outputs.ref }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check
+        run: pnpm run check
+
+      - name: Deploy to production
+        run: pnpm run deploy:prod
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

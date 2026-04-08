@@ -88,6 +88,29 @@ pnpm run deploy:staging
 pnpm run deploy:prod
 ```
 
+## GitHub Actions deployment
+
+Workflows included:
+
+- `.github/workflows/deploy-staging.yml`
+  - runs on push to `main`
+  - also supports manual trigger
+  - deploys with `pnpm run deploy:staging`
+- `.github/workflows/deploy-production.yml`
+  - manual trigger only (`workflow_dispatch`)
+  - accepts an optional `ref` input
+  - deploys with `pnpm run deploy:prod`
+
+Required GitHub secrets (repo or environment level):
+
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+
+Recommended setup:
+
+- Use GitHub environment `staging` for staging deploys.
+- Use GitHub environment `production` with required reviewers for manual production deploy approvals.
+
 ## Commit conventions
 
 Uses [Conventional Commits](https://www.conventionalcommits.org/) with an added `content` type:
