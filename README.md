@@ -36,24 +36,22 @@ draft: false
 Article body here...
 ```
 
-2. Commit and push to `main` — Cloudflare deploys automatically.
+2. Commit and push to `main`.
+
+If the article is meant for production, run the manual production deploy workflow after the push. If it is a staging-only change, use the staging deploy path instead.
 
 **Draft articles** (`draft: true`) are excluded from builds and the RSS feed.
 
 ## Deployment
 
-Deployed to **Cloudflare Workers** (static assets mode) via Git integration.
+Deployed to **Cloudflare Workers** (static assets mode).
 
-- Every push to `main` triggers a build + deploy
-- Pull requests get preview URLs automatically
-- Custom domain: `rafaeloaguirre.com`
+Production and staging are handled through Wrangler plus GitHub Actions:
 
-Manual deploy (if needed):
-
-```sh
-pnpm build
-pnpm exec wrangler deploy
-```
+- `staging.rafaeloaguirre.com` deploys from the `staging` environment
+- `rafaeloaguirre.com` and `www.rafaeloaguirre.com` are attached as production custom domains
+- production deploys are manual through the `Deploy Production` GitHub Actions workflow
+- staging can still be deployed from the CLI when needed
 
 ### Staging deploy (subdomain)
 
@@ -87,6 +85,38 @@ Useful scripts:
 pnpm run deploy:staging
 pnpm run deploy:prod
 ```
+
+### Production release
+
+The default Wrangler config targets these production domains:
+
+- `rafaeloaguirre.com`
+- `www.rafaeloaguirre.com`
+
+Recommended release path:
+
+1. Push the release commit to `main`.
+2. Open GitHub Actions and run `Deploy Production`.
+3. Leave the `ref` input as `main` unless you are deploying a tagged release.
+4. Verify both production URLs after the workflow finishes.
+
+### Mail-safe DNS cutover
+
+If email is still handled by an existing mail provider, do not rely on the apex website record for mail delivery once the site moves to Workers.
+
+Before cutting the website over:
+
+- create an explicit mail host record for the provider
+- add an explicit `MX` record pointing to that mail host
+- keep mail-related `TXT` records such as SPF, DKIM, and DMARC in place
+- leave any provider-specific records such as `autodiscover` untouched if they are already in use
+
+Then point the website hostnames (`@` and optionally `www`) to Cloudflare Workers through the attached custom domains.
+
+Keep these rules in mind:
+
+- Do not proxy mail records through Cloudflare.
+- Only remove the old website `A`/`CNAME` records once the new Worker custom domains are active.
 
 ## GitHub Actions deployment
 

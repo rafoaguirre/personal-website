@@ -9,6 +9,16 @@
 	"assets": {
 		"directory": "./dist/client",
 	},
+	"routes": [
+		{
+			"pattern": "rafaeloaguirre.com",
+			"custom_domain": true,
+		},
+		{
+			"pattern": "www.rafaeloaguirre.com",
+			"custom_domain": true,
+		},
+	],
 	"observability": {
 		"enabled": true,
 	},

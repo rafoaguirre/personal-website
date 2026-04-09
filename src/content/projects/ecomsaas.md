@@ -3,6 +3,7 @@ title: 'EcomSaaS'
 summary: 'Multi-tenant e-commerce platform with vendor storefronts, marketplace and split-payments flows, plus AI-powered store operations and blockchain-ready architecture.'
 stack: ['TypeScript', 'Next.js', 'NestJS', 'Turborepo', 'Supabase', 'Stripe Connect', 'Polygon']
 year: 2026
+repoUrl: 'https://github.com/rafoaguirre/ecomsass'
 featured: true
 ---
 
