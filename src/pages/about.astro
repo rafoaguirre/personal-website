@@ -2,21 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const skills = [
+  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'React Native', 'Flutter'] },
+  { category: 'Backend', items: ['Node.js', 'Go', 'Rust', 'REST APIs'] },
   {
     category: 'Blockchain',
-    items: ['Solidity', 'Hardhat', 'ethers.js', 'Solana', 'Anchor', 'DApps', 'Wallets'],
+    items: ['Solidity', 'EVM', 'Solana', 'Smart contracts', 'Wallet integrations'],
   },
-  { category: 'Languages', items: ['Rust', 'Golang', 'TypeScript', 'JavaScript', 'Dart'] },
-  { category: 'Frontend / Mobile', items: ['React', 'Next.js', 'React Native', 'Flutter'] },
-  { category: 'Cloud / DevOps', items: ['AWS', 'GCP', 'Terraform', 'CI/CD', 'SRE'] },
+  { category: 'Cloud', items: ['AWS', 'GCP', 'Terraform'] },
   { category: 'Data', items: ['PostgreSQL', 'MongoDB'] },
-  { category: 'Tooling', items: ['GitHub Copilot', 'Codex', 'MCP servers', 'VS Code'] },
+  {
+    category: 'Delivery Tooling',
+    items: ['GitHub Copilot', 'Codex', 'AI-assisted workflows', 'MCP servers'],
+  },
 ];
 ---
 
 <BaseLayout
   title="About"
-  description="Background, experience, and technical focus of Rafael Aguirre."
+  description="Technical lead and senior full-stack engineer with deep blockchain, cloud, and platform delivery experience."
 >
   <section class="py-16">
     <p class="section-kicker">About</p>
@@ -26,27 +29,30 @@ const skills = [
       class="panel-card mt-8 rounded-[1.8rem] p-7 space-y-6 text-base leading-8 text-[var(--site-muted)]"
     >
       <p>
-        I am a blockchain-focused software engineer with more than eight years of experience
-        designing, building, deploying, and maintaining systems across Web3, backend, mobile, and
-        cloud. My work usually sits at the intersection of architecture and delivery: turning
-        complex technical requirements into software that can survive real usage.
+        I am a technical lead and senior full-stack engineer with 9+ years of experience building
+        production systems across web, backend, cloud, and blockchain platforms.
       </p>
       <p>
-        The strongest thread through my experience is blockchain architecture across EVM and Solana
-        ecosystems, including smart contracts, DApps, wallet products, NFT systems, decentralized
-        exchange interfaces, and event-driven trading workflows. Around that, I stay close to the
-        infrastructure: CI/CD, SRE practices, cloud environments, automation, and reliability.
+        A strong thread in my work is blockchain architecture and delivery: smart contract
+        integrations across EVM and Solana, wallet applications, payment platforms, NFT tooling, and
+        decentralized exchange interfaces.
       </p>
       <p>
-        I also care about technical writing as a way to sharpen judgment and make the reasoning
-        behind engineering decisions more explicit. This site is where I document projects, share
-        what I am learning, and show the kinds of systems work I enjoy doing most.
+        I work at the intersection of product, architecture, and execution, helping teams translate
+        ambiguous ideas into scalable systems that remain maintainable as they grow. Alongside that,
+        I use AI-assisted and data-driven workflows where they create practical product and delivery
+        value.
+      </p>
+      <p>
+        Beyond implementation, I contribute through architecture reviews, technical proposals,
+        design documentation, mentoring, and delivery alignment across clients, product teams, and
+        engineers.
       </p>
     </div>
 
     <div class="mt-16 border-t border-[var(--site-line)] pt-12">
       <h2 class="mb-8 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--site-muted)]">
-        Skills &amp; Tools
+        Tech Stack
       </h2>
       <dl class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {
@@ -72,10 +78,7 @@ const skills = [
       </h2>
       <ul class="flex flex-wrap gap-4">
         {
-          [
-            { label: 'GitHub', href: 'https://github.com/rafoaguirre' },
-            { label: 'LinkedIn', href: 'https://linkedin.com/in/rafaeloaguirre' },
-          ].map(({ label, href }) => (
+          [{ label: 'GitHub', href: 'https://github.com/rafoaguirre' }].map(({ label, href }) => (
             <li>
               <a
                 href={href}
