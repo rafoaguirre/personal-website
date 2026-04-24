@@ -2,12 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact" description="Get in touch with Rafael Aguirre.">
+<BaseLayout
+  title="Contact"
+  description="Contact Rafael Aguirre about senior full-stack, cloud, and Web3 engineering work."
+>
   <section class="py-16">
     <p class="section-kicker">Contact</p>
     <h1 class="mt-5 text-4xl font-semibold text-[var(--site-ink)]">Contact</h1>
     <p class="mt-4 text-base leading-8 text-[var(--site-muted)]">
-      The best way to reach me is by email. I also post on LinkedIn.
+      Looking for a senior engineer who can own technical direction and delivery? Reach out by
+      email.
     </p>
 
     <div class="panel-card mt-10 rounded-[1.8rem] p-7">
@@ -18,11 +22,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               label: 'Email',
               value: 'hey@rafaeloaguirre.com',
               href: 'mailto:hey@rafaeloaguirre.com',
-            },
-            {
-              label: 'LinkedIn',
-              value: 'linkedin.com/in/rafaeloaguirre',
-              href: 'https://linkedin.com/in/rafaeloaguirre',
             },
           ].map(({ label, value, href }) => (
             <li class="flex items-center gap-4">
