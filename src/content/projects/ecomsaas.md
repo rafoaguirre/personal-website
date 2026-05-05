@@ -1,6 +1,6 @@
 ---
 title: 'EcomSaaS'
-summary: 'Multi-tenant e-commerce platform with vendor storefronts, marketplace and split-payments flows, plus AI-powered store operations and blockchain-ready architecture.'
+summary: 'Multi-tenant commerce platform with vendor dashboards, marketplace storefronts, Stripe checkout, shared domain packages, and queue-backed worker flows.'
 stack: ['TypeScript', 'Next.js', 'NestJS', 'Turborepo', 'Supabase', 'Stripe Connect', 'Polygon']
 year: 2026
 repoUrl: 'https://github.com/rafoaguirre/ecomsass'
@@ -9,24 +9,28 @@ featured: true
 
 ## Overview
 
-EcomSaaS is a portfolio project focused on building a modern multi-tenant commerce system with clear service boundaries and realistic product workflows. Vendors can run branded storefronts, and the platform is designed to scale into advanced payments and blockchain features without forcing everything into a monolith.
+EcomSaaS is a full-stack monorepo for a multi-tenant commerce platform. The project is built to show practical systems design across product surfaces that have to work together: vendor onboarding, store management, marketplace browsing, multi-vendor checkout, payment workflows, and background processing.
 
-## Product scope
+The repo focuses on the coordination points that make a commerce platform meaningful to review as engineering work, not just isolated CRUD screens.
 
-- Vendor-managed stores exposed through subdomains
-- Marketplace surface for store discovery
-- Multi-vendor cart and checkout flows
-- Stripe Connect payment splitting for platform and vendor payouts
-- Blockchain-ready direction for crypto payments, rewards, and fundraising
+## What is implemented
 
-## Engineering approach
+- Vendor dashboard flows for onboarding, store configuration, and product management
+- Marketplace and storefront experiences for browsing stores and purchasing products
+- Multi-vendor cart and checkout with Stripe payment intents and webhook handling
+- Shared domain, application, validation, API client, and UI packages inside a Turborepo monorepo
+- Redis and BullMQ-backed caching, queues, email notifications, and worker jobs
 
-The codebase uses a Turborepo monorepo with explicit boundaries (`clients`, `backends`, `packages`, `blockchain`, and `infra`). Shared domain and contract packages keep core logic and API types consistent across services, while preserving independent iteration for frontend and backend applications.
+## Engineering focus
+
+The codebase uses explicit workspace boundaries across `clients`, `backends`, `packages`, `blockchain`, and `infra`. Shared domain and contract packages keep business rules and API types aligned across applications, while NestJS services, Next.js clients, and infrastructure adapters remain independently evolvable.
+
+This project is meant to demonstrate more than feature shipping. The main signal is architectural discipline: clear package boundaries, practical clean-architecture patterns, realistic payment handling, operational workflows, and room for future blockchain extensions without forcing Web3 complexity into the core platform too early.
 
 ## AI usage
 
-This project includes an AI-powered management direction via an MCP server for natural-language store configuration. Development was AI-assisted (Copilot/Claude) for implementation speed, but architecture, design decisions, code review, and validation remained developer-owned.
+Development was AI-assisted for implementation speed and documentation support, but architecture, system boundaries, technical decisions, review, and validation remained developer-owned. The product direction also includes an MCP server for natural-language store configuration.
 
 ## Current status
 
-This is an active portfolio build and not yet production-ready. Security hardening and compliance work are being implemented progressively, and the project is used to demonstrate systems thinking, maintainable architecture, and practical full-stack execution.
+This is an active portfolio build, not a production launch. Security hardening, compliance work, and the blockchain phase are still in progress, but the current repo already demonstrates meaningful backend, frontend, payments, queueing, and architecture work in one cohesive system.
