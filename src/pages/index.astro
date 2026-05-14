@@ -16,20 +16,19 @@ const projects = (await getCollection('projects'))
   .slice(0, 3);
 
 const workStats = [
-  { label: 'Years of production engineering', value: '9+' },
-  { label: 'Years of Blockchain & Web3 delivery', value: '9+' },
-  { label: 'Client systems delivered', value: '10+' },
+  { label: 'Years delivering production systems', value: '9+' },
+  { label: 'Architecture-heavy client systems delivered', value: '10+' },
   { label: 'Team scale led', value: 'up to 15' },
+  { label: 'Years across blockchain and product systems', value: '9+' },
 ];
 
 const workNotes = [
-  'blockchain architecture',
-  'smart contracts (EVM + Solana)',
-  'wallet, payments, and exchange systems',
-  'backend and platform systems',
+  'platform architecture',
+  'commerce and payment flows',
+  'backend and cloud systems',
   'architecture reviews and design docs',
-  'AI-assisted workflows',
-  'mobile-first product delivery',
+  'AI workflows and tool orchestration',
+  'blockchain integrations where they fit',
 ];
 
 type ContractorProject = {
@@ -43,56 +42,74 @@ type ContractorProject = {
 
 const focusAreas = [
   {
-    title: 'Blockchain & distributed systems',
+    title: 'Platform architecture and delivery',
     detail:
-      'Smart contract integration across EVM and Solana, plus wallet products, payment systems, NFT tooling, and decentralized exchange experiences.',
+      'System design, package boundaries, technical decision-making, and end-to-end execution for products that need to keep evolving after launch.',
   },
   {
-    title: 'Backend and cloud architecture',
+    title: 'Commerce and payment systems',
     detail:
-      'Data-driven service design, APIs, event workflows, and cloud infrastructure that scales with production demand.',
+      'Checkout flows, payment integrations, order workflows, webhook handling, and the operational details that make commerce products reliable.',
   },
   {
-    title: 'Full-stack product delivery',
+    title: 'Backend, cloud, and AI systems',
     detail:
-      'From product scoping to implementation, I ship web and mobile systems with maintainability, reliability, and clear technical standards.',
+      'APIs, background jobs, queues, secure integration gateways, workflow execution, and infrastructure decisions that support real product constraints.',
   },
   {
-    title: 'Automation and data-driven systems',
+    title: 'Blockchain integrations where they fit',
     detail:
-      'Use AI-assisted workflows, automation, and data pipelines where they create practical value for delivery and product execution.',
+      'Smart contract integrations, wallets, and exchange-adjacent product systems used where they support the product rather than dominate it.',
+  },
+];
+
+const consultingAreas = [
+  {
+    title: 'Software architecture reviews',
+    detail:
+      'Independent review of system design, platform boundaries, technical risk, scalability, implementation tradeoffs, and delivery plans.',
+  },
+  {
+    title: 'Prototype and product direction',
+    detail:
+      'Turning an early idea into a practical technical scope, first build path, milestone plan, and implementation slice.',
+  },
+  {
+    title: 'AI-enabled workflow systems',
+    detail:
+      'Workflow audits, secure tool integrations, MCP/tool orchestration, internal automation, and implementation support around real business processes.',
   },
 ];
 
 const workApproach = [
   'I translate unclear ideas into structured, working systems.',
   'I set technical standards and mentor teams through complex builds.',
-  'I align clients, product, design, and engineering around scope and tradeoffs.',
+  'I align clients, product, design, and development teams around scope and tradeoffs.',
   'I prioritize maintainability and long-term scalability.',
   'I move quickly without over-engineering.',
-  'I use AI tools like Copilot and Codex to accelerate delivery where it helps.',
+  'I use AI where it improves delivery, and I build secure tool and workflow infrastructure when products need it.',
 ];
 
 const experience = [
   {
-    role: 'Technical Lead / Senior Full-Stack Engineer (Founder)',
+    role: 'Technical Lead / Senior Full-Stack Developer (Founder)',
     company: 'EastCode Blockchain Labs',
     period: '2017 - Present',
     location: 'Canada',
     points: [
       'Lead architecture and delivery across custom web, mobile, backend, blockchain, and cloud systems for client engagements.',
       'Built production platforms including payment systems, admin systems, wallet applications, NFT tooling, and decentralized exchange products.',
-      'Set technical direction through proposals, architecture reviews, design documentation, engineering standards, and mentoring across teams of up to 15 people.',
+      'Set technical direction through proposals, architecture reviews, design documentation, development standards, and mentoring across teams of up to 15 people.',
       'Integrated smart contracts across EVM and Solana ecosystems while guiding delivery quality and cross-functional execution.',
     ],
   },
   {
-    role: 'Infrastructure Engineer',
+    role: 'Infrastructure Developer',
     company: 'ATMTA Inc.',
     period: '2021 - 2023',
     location: 'Remote',
     points: [
-      'Managed infrastructure supporting the Star Atlas marketplace and related Web3 platform services during a high-traffic production launch.',
+      'Managed infrastructure supporting the Star Atlas marketplace and related blockchain platform services during a high-traffic production launch.',
       'Led deployment, environment, and secret-management decisions that improved release consistency and reduced operational risk.',
       'Assessed infrastructure requirements for new services, performed scalability testing, and guided follow-up optimization based on production needs.',
     ],
@@ -105,7 +122,7 @@ const experience = [
     points: [
       'Led development of React Native wallet features, including two-factor authentication and transaction-management workflows, with emphasis on release quality.',
       'Built reusable internal tooling and shared npm packages that standardized implementation patterns across the team.',
-      'Owned DevOps, Kubernetes, SRE, and engineering workflow standards that improved delivery consistency across supported platforms.',
+      'Owned DevOps, Kubernetes, SRE, and development workflow standards that improved delivery consistency across supported platforms.',
     ],
   },
   {
@@ -135,7 +152,7 @@ const experience = [
 const caseStudies = [
   {
     title: 'Marketplace launch infrastructure',
-    context: 'Web3 marketplace / infrastructure-heavy launch',
+    context: 'Blockchain marketplace / infrastructure-heavy launch',
     owned:
       'Owned launch-readiness planning, deployment workflows, secret management, and post-launch scalability work.',
     outcome:
@@ -153,9 +170,9 @@ const caseStudies = [
 
 const contractorProjects: ContractorProject[] = [
   {
-    name: 'Pentos',
+    name: 'AI workflow platform',
     href: 'https://www.pentos.ai',
-    label: 'AI collaboration platform',
+    label: 'Secure tool orchestration',
     image: '/project-previews/pentos-homepage-preview.png',
   },
   {
@@ -173,7 +190,7 @@ const contractorProjects: ContractorProject[] = [
   {
     name: 'Star Atlas',
     href: 'https://staratlas.com/',
-    label: 'Web3 game',
+    label: 'Blockchain game',
     image: '/project-previews/star-atlas-homepage-preview.png',
   },
   {
@@ -189,11 +206,66 @@ const contractorProjects: ContractorProject[] = [
     image: '/project-previews/tokes-homepage-preview.png',
   },
 ];
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rafael Aguirre',
+  url: 'https://rafaeloaguirre.com',
+  jobTitle: 'Senior Full-Stack Developer and Technical Lead',
+  description:
+    'Software architecture consultant and senior full-stack developer helping teams plan, review, and deliver product and platform systems.',
+  sameAs: ['https://github.com/rafoaguirre'],
+  knowsAbout: [
+    'Software architecture',
+    'Full-stack development',
+    'Platform systems',
+    'SaaS',
+    'Commerce systems',
+    'Cloud infrastructure',
+    'Blockchain integrations',
+    'AI-enabled workflow systems',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Focused consulting',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Software architecture reviews',
+          description:
+            'Architecture review, technical risk assessment, platform boundary review, and delivery planning.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Prototype and product direction',
+          description:
+            'Technical scoping and implementation planning for early product ideas and prototypes.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI-enabled workflow systems',
+          description:
+            'Workflow audits, secure tool integrations, AI workflow tooling, and implementation support.',
+        },
+      },
+    ],
+  },
+};
 ---
 
 <BaseLayout
-  title="Rafael Aguirre"
-  description="Technical lead and senior full-stack engineer building cloud, blockchain, and data-driven product systems for production."
+  title="Software Architecture Consultant"
+  description="Software architecture consultant and senior full-stack developer helping teams plan, review, and deliver product/platform systems, AI-enabled workflows, commerce, cloud, and blockchain integrations."
+  jsonLd={homeJsonLd}
 >
   <section class="grid gap-8 pb-10 pt-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch lg:gap-10">
     <div class="panel-card relative overflow-hidden rounded-[2.2rem] p-8 sm:p-10 lg:p-12">
@@ -203,25 +275,24 @@ const contractorProjects: ContractorProject[] = [
       </div>
       <div class="comic-dots absolute inset-0 opacity-35"></div>
       <div class="relative">
-        <p class="section-kicker">
-          Technical Lead &amp; Senior Full-Stack Engineer | Cloud, Web3 &amp; Product Systems
-        </p>
+        <p class="section-kicker">Architecture, Delivery, and Product &amp; Platform Systems</p>
         <p class="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-[var(--site-muted)]">
           Rafael Aguirre
         </p>
         <h1
           class="mt-2 max-w-3xl text-3xl leading-tight font-semibold text-[var(--site-ink)] sm:text-4xl lg:text-5xl"
         >
-          I design and build production-ready applications across web, backend, cloud, and
-          blockchain systems.
+          I design and ship product systems where architecture, execution, and operational reality
+          all matter.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--site-muted)] sm:text-xl">
-          From early-stage ideas to scalable platforms, I help teams turn complex requirements into
-          working products.
+          I work with founders and product teams to turn ambiguous requirements into maintainable
+          platforms across backend services, frontend applications, payments, cloud infrastructure,
+          and delivery workflows.
         </p>
         <p class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-muted)]">
-          Looking for someone to own architecture and delivery across SaaS and Web3? Let&apos;s
-          talk.
+          Looking for someone to own technical direction and execution across product and platform
+          systems? Let&apos;s talk.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a
@@ -251,8 +322,9 @@ const contractorProjects: ContractorProject[] = [
             What I Do
           </h2>
           <p class="mt-4 max-w-lg text-base leading-7 text-[var(--site-muted)]">
-            I work across the full stack in SaaS and Web3 environments, focusing on systems that
-            need to scale, evolve, and actually ship.
+            I work across SaaS, commerce, cloud, blockchain, and AI-enabled products, with the most
+            value in architecture-heavy builds that need clear boundaries, reliable execution, and
+            room to evolve.
           </p>
           <div class="mt-8 flex flex-wrap gap-2">
             {
@@ -338,15 +410,14 @@ const contractorProjects: ContractorProject[] = [
     </div>
     <div class="panel-card rounded-[1.7rem] p-6 sm:p-7">
       <p class="text-base leading-8 text-[var(--site-muted)]">
-        I help teams turn ambiguous product ideas into scalable, maintainable systems. My work spans
-        SaaS platforms, ecommerce systems, mobile applications, high-traffic marketplaces, and
-        blockchain-integrated products, with growing focus on automation and data-driven
-        applications.
+        I work across SaaS, commerce, cloud, blockchain, and AI-enabled products, with the most
+        value in architecture-heavy builds that need clear boundaries, reliable execution, and room
+        to evolve.
       </p>
       <p class="mt-4 text-base leading-8 text-[var(--site-muted)]">
-        The common thread is end-to-end ownership: shaping architecture, writing design
-        documentation, aligning stakeholders around tradeoffs, mentoring engineers, and keeping
-        systems adaptable as requirements evolve.
+        The through line is technical ownership: shaping architecture, writing design documentation,
+        aligning stakeholders around tradeoffs, mentoring developers, and keeping systems adaptable
+        as requirements evolve.
       </p>
     </div>
     <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -358,6 +429,45 @@ const contractorProjects: ContractorProject[] = [
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section id="consulting" class="border-t border-[var(--site-line)] py-20">
+    <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-4xl">
+        <p class="section-kicker">Focused Consulting</p>
+        <h2 class="mt-5 text-4xl font-semibold text-[var(--site-ink)]">
+          Senior technical judgment for architecture, prototypes, and AI-enabled workflow systems.
+        </h2>
+      </div>
+      <p class="max-w-xl text-sm leading-7 text-[var(--site-muted)]">
+        Short, focused engagements for teams that need practical direction before or during a build,
+        without turning the work into a long agency process.
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        consultingAreas.map((area) => (
+          <article class="panel-card rounded-[1.5rem] p-5">
+            <h3 class="text-xl font-semibold text-[var(--site-ink)]">{area.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-[var(--site-muted)]">{area.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p class="max-w-2xl text-sm leading-7 text-[var(--site-muted)]">
+        Best fit: architecture reviews, prototype planning, technical risk reviews, workflow audits,
+        secure tool integrations, and hands-on implementation support.
+      </p>
+      <a
+        href="/contact"
+        class="w-fit rounded-full border border-[var(--site-ink)] bg-[var(--site-ink)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--site-bg-soft)] hover:-translate-y-0.5 hover:bg-[var(--site-accent)]"
+      >
+        Email about consulting
+      </a>
     </div>
   </section>
 
@@ -452,8 +562,8 @@ const contractorProjects: ContractorProject[] = [
         </h2>
       </div>
       <p class="max-w-xl text-sm leading-7 text-[var(--site-muted)]">
-        Public-facing examples across AI collaboration, decentralized exchange, wallets, gaming, and
-        blockchain product environments.
+        Public-facing examples across product and platform systems, tool-enabled workflows, gaming,
+        and blockchain product environments.
       </p>
     </div>
 
@@ -580,14 +690,19 @@ const contractorProjects: ContractorProject[] = [
       <div>
         <p class="section-kicker">Working With Me</p>
         <h2 class="mt-5 text-4xl font-semibold text-[var(--site-ink)]">
-          Looking for a senior engineer who can own technical direction and execution?
+          Looking for a senior technical lead who can own technical direction and execution?
         </h2>
       </div>
       <div class="space-y-4">
         <p class="text-base leading-7 text-[var(--site-muted)]">
-          I work with founders and product teams to build from scratch, improve existing platforms,
-          and deliver under tight timelines across blockchain, backend, and cloud without
-          sacrificing maintainability.
+          I work with founders and product teams to build new products, improve existing platforms,
+          and deliver against real constraints across backend services, frontend applications,
+          payments, infrastructure, and blockchain integrations where they fit.
+        </p>
+        <p class="text-base leading-7 text-[var(--site-muted)]">
+          I also take on focused consulting work where teams need software architecture reviews,
+          technical direction, AI-enabled workflow and tooling reviews, or hands-on delivery
+          support.
         </p>
         <div class="flex flex-wrap gap-3">
           <a
