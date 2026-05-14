@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
   title,
-  description = 'Blockchain architect and senior full-stack engineer building production systems across web3, backend, and cloud.',
+  description = 'Senior full-stack developer and technical lead offering software architecture consulting, product and platform systems delivery, and AI-enabled workflow tooling.',
   image,
+  jsonLd,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -47,6 +49,8 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <div
