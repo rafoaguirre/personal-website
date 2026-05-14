@@ -13,9 +13,11 @@ const { id, title, summary, stack = [], year, repoUrl, liveUrl } = Astro.props;
 const slug = id.replace(/\.(md|mdx)$/, '');
 ---
 
-<article class="panel-card group rounded-[1.5rem] p-6 transition-transform hover:-translate-y-1">
-  <div class="flex items-start justify-between gap-4">
-    <div class="flex-1 min-w-0">
+<article
+  class="panel-card group flex h-full flex-col rounded-[1.5rem] p-6 transition-transform hover:-translate-y-1"
+>
+  <div class="flex flex-1 items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
       <a href={`/projects/${slug}`} class="block">
         <!-- <p class="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[var(--site-muted)]">
           Portfolio note
